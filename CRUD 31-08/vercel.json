@@ -1,5 +1,11 @@
 {
   "version": 2,
+  "builds": [
+    {
+      "src": "*.js",
+      "use": "@vercel/node"
+    }
+  ],
   "routes": [
     {
       "src": "/api/get-song-context",
@@ -10,10 +16,6 @@
       "src": "/api/get-song-preview",
       "dest": "/get-song-preview.js",
       "methods": ["POST"]
-    },
-    {
-      "src": "/(.+\\.\\w+)",
-      "dest": "/$1"
     },
     {
       "src": "/(.*)",
