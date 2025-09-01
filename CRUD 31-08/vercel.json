@@ -2,18 +2,18 @@
   "version": 2,
   "builds": [
     {
-      "src": "CRUD-31-08/server.js",
+      "src": "server.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/",
-      "dest": "CRUD-31-08/server.js"
+      "dest": "server.js"
     },
     {
       "src": "/api/(.*)",
-      "dest": "CRUD-31-08/server.js"
+      "dest": "server.js"
     }
   ]
 }
