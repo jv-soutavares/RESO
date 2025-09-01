@@ -2,7 +2,11 @@
   "version": 2,
   "builds": [
     {
-      "src": "*.js",
+      "src": "get-song-context.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "get-song-preview.js",
       "use": "@vercel/node"
     }
   ],
