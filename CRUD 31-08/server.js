@@ -10,6 +10,11 @@ const genAI = new GoogleGenerativeAI("AIzaSyDpcESJ5NIQHp4Yh-DiXATmpeniypVAhZ0");
 app.use(express.json());
 app.use(cors());
 
+// Rota para verificar se a API está no ar.
+app.get('/', (req, res) => {
+    res.status(200).json({ message: 'API is running' });
+});
+
 app.post('/api/get-song-context', async (req, res) => {
     try {
         const { song, artist } = req.body;
@@ -53,6 +58,4 @@ app.post('/api/get-song-preview', async (req, res) => {
     }
 });
 
-// A Vercel não precisa dessa parte para rodar a API.
-// Ela gerencia a porta e a execução da função automaticamente.
 module.exports = app;
