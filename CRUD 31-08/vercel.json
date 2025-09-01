@@ -1,19 +1,17 @@
 {
   "version": 2,
-  "builds": [
+  "rewrites": [
     {
-      "src": "server.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/",
-      "dest": "server.js"
+      "source": "/api/get-song-context",
+      "destination": "/get-song-context.js"
     },
     {
-      "src": "/api/(.*)",
-      "dest": "server.js"
+      "source": "/api/get-song-preview",
+      "destination": "/get-song-preview.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
