@@ -1,17 +1,19 @@
 {
   "version": 2,
-  "rewrites": [
+  "routes": [
     {
-      "source": "/api/get-song-context",
-      "destination": "/get-song-context.js"
+      "src": "/api/get-song-context",
+      "dest": "/get-song-context.js",
+      "methods": ["POST"]
     },
     {
-      "source": "/api/get-song-preview",
-      "destination": "/get-song-preview.js"
+      "src": "/api/get-song-preview",
+      "dest": "/get-song-preview.js",
+      "methods": ["POST"]
     },
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
