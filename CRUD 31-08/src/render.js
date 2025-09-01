@@ -23,7 +23,7 @@ const closeModal = (modalElement) => {
 // Gemini -> Contexto
 const fetchSongContext = async (songTitle, artistName) => {
     try {
-        const response = await fetch('http://localhost:3000/api/get-song-context', {
+        const response = await fetch('/api/get-song-context', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
