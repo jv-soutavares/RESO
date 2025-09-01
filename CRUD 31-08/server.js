@@ -3,6 +3,8 @@ const { GoogleGenerativeAI } = require('@google/generative-ai');
 const cors = require('cors');
 const app = express();
 
+// IMPORTANTE: Para segurança, use variáveis de ambiente para a sua API Key.
+// Por exemplo: new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const genAI = new GoogleGenerativeAI("AIzaSyDpcESJ5NIQHp4Yh-DiXATmpeniypVAhZ0");
 
 app.use(express.json());
@@ -34,14 +36,13 @@ app.post('/api/get-song-preview', async (req, res) => {
         const response = await fetch(deezerApiUrl);
         const data = await response.json();
 
-        // Verifica se a resposta contém dados e se a prévia e a capa existem
         if (data.data && data.data.length > 0 && data.data[0].preview && data.data[0].album.cover_medium) {
             const previewUrl = data.data[0].preview;
-            const coverUrl = data.data[0].album.cover_medium; // <--- URL da capa!
+            const coverUrl = data.data[0].album.cover_medium;
 
             res.json({ 
                 previewUrl: previewUrl,
-                coverUrl: coverUrl // <--- Envia a URL da capa de volta para o cliente
+                coverUrl: coverUrl
             });
         } else {
             res.status(404).json({ error: 'Pré-visualização ou capa da música não encontrada.' });
@@ -52,5 +53,6 @@ app.post('/api/get-song-preview', async (req, res) => {
     }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
+// A Vercel não precisa dessa parte para rodar a API.
+// Ela gerencia a porta e a execução da função automaticamente.
+module.exports = app;
